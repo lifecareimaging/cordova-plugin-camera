@@ -401,8 +401,9 @@ static NSString* toBase64(NSData* data) {
 
     // generate unique file name
     int i = 1;
+    long now = (long)[[NSDate date] timeIntervalSince1970];
     do {
-        filePath = [NSString stringWithFormat:@"%@/%@%03d.%@", docsPath, CDV_PHOTO_PREFIX, i++, extension];
+        filePath = [NSString stringWithFormat:@"%@/%@%lu_%03d.%@", docsPath, CDV_PHOTO_PREFIX, now, i++, extension];
     } while ([fileMgr fileExistsAtPath:filePath]);
 
     return filePath;
